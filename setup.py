@@ -1,9 +1,11 @@
+import os
 import setuptools
 
 
 with open("README.md") as fp:
     long_description = fp.read()
 
+CDK_VERSION = os.environ.get("CDK_VERSION", "1.46.0")
 
 setuptools.setup(
     name="lambda_bundler_demo",
@@ -19,7 +21,9 @@ setuptools.setup(
     packages=setuptools.find_packages(where="lambda_bundler_demo"),
 
     install_requires=[
-        "aws-cdk.core==1.46.0",
+        f"aws-cdk.aws-lambda=={CDK_VERSION}",
+        f"aws-cdk.core=={CDK_VERSION}",
+        "lambda-bundler"
     ],
 
     python_requires=">=3.6",
