@@ -1,0 +1,50 @@
+name: Lambda-Bundler-Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Trigger on release, this will cause the upload to Pypi
+  release:
+    types:
+      - created
+
+env:
+  CDK_VERSION: "1.46.0"
+
+jobs:
+
+  cross_platform_tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest] 
+        pythonVersion: ["3.7"]
+        nodeVersion: ["12.x"]
+    
+      fail-fast: true
+    
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v2
+      
+      - name: Use Node.js ${{ matrix.nodeVersion }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.nodeVersion }}
+      
+      - name: Install CDK @ ${{ env.CDK_VERSION }}
+        run: npm install aws-cdk@${{ env.CDK_VERSION }}
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.pythonVersion }}
+      
+      - name: Install dev dependencies
+        run: pip install -r requirements.txt
+      
+      - name: CDK Synth
+        run: cdk synth
