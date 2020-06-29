@@ -48,3 +48,6 @@ jobs:
       
       - name: CDK Synth
         run: cdk synth
+
+      - name: Additional CDK Synth with caching
+        run: cdk synth
