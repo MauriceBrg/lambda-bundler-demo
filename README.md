@@ -1,6 +1,6 @@
 # Lambda Bundler Demo
 
-![Lambda-Bundler-Demo-Build](https://github.com/MauriceBrg/lambda-bundler-demo/workflows/Lambda-Bundler-Demo-Build/badge.svg)
+[![Lambda-Bundler-Demo-Build](https://github.com/MauriceBrg/lambda-bundler-demo/workflows/Lambda-Bundler-Demo-Build/badge.svg)](https://github.com/MauriceBrg/lambda-bundler-demo/actions?query=workflow%3ALambda-Bundler-Demo-Build)
 
 This project is a demo of the `lambda-bundler` python library, which allows you to package your python lambda functions and their dependencies using pure python.
 
