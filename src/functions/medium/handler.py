@@ -1,2 +1,4 @@
+import pytz
+
 def lambda_handler(event, context):
-    pass
+    print(f"pytz version: {pytz.__version__}")

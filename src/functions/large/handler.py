@@ -1,2 +1,4 @@
+import pandas as pd
+
 def lambda_handler(event, context):
-    pass
+    print(f"pandas version: {pd.__version__}")
